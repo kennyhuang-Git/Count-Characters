@@ -1,0 +1,16 @@
+# Insert your filesname thats on your computer (with the directory if possible) and the target word or letters that you'd like to be counted
+def countCharacters(filename,target_letters):
+    lst = []
+    dic = {}
+    for idx in range(len(target_letters)):
+        lst.append(target_letters[idx])
+
+    with open(filename) as file:
+        for line in file:
+            for idx in range(len(line)):
+                letter = line[idx]
+                for idx in range(len(lst)):
+                    if lst[idx] in letter:
+                        num = dic.get(lst[idx],0)
+                        dic[lst[idx]] = num + 1
+    return dic
